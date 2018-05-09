@@ -1,0 +1,8 @@
+Teste de saida.
+Este comando lista os ficheiros:
+$ ls
+Agora podemos ordenar estes ficheiros:
+$| sort
+E escolher o primeiro:
+$| head -1
+
