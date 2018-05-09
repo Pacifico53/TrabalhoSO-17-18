@@ -1,10 +1,10 @@
-Teste de saida.
 Este comando lista os ficheiros:
 >>>
 erros.txt
-exe
 exemplo.nb
 file.c
+Makefile
+program
 README.md
 saida.nb
 <<<

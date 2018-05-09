@@ -45,8 +45,6 @@ int main(int argc, char *argv[])
  
     dup2(fi, 0);
     close(fi);
-    
-    printf("Teste de saida.\n");
 
     read(0, buf, 1024);
     
