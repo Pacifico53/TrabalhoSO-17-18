@@ -1,7 +1,6 @@
 Teste de saida.
 Este comando lista os ficheiros:
 >>>
-command = "ls"
 erros.txt
 exe
 exemplo.nb
