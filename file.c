@@ -5,6 +5,7 @@
 #include <fcntl.h>
 #include <signal.h>
 #include <sys/types.h>
+#include <string.h>
 
 int main(int argc, char *argv[])
 {
@@ -48,7 +49,42 @@ int main(int argc, char *argv[])
     printf("Teste de saida.\n");
 
     read(0, buf, 1024);
-    printf("%s\n", buf);
+    
+    int i = 0;
+    int ii = 0;
+    int j = 0;
+    char command[256];
+    
+    for (i = 0; buf[i] != '\0'; i++) {
+        if (buf[i] == '$' && buf[i+1] != '|') {
+            printf(">>>\n");
+            for (j = i + 2; buf[j] != '\n'; j++) {
+                command[ii] = buf[j];
+                ii++;
+            }
+            
+            FILE *fp;
+            char path[1035];
 
+            /* Open the command for reading. */
+            fp = popen(command, "r");
+            if (fp == NULL) {
+                printf("Failed to run command\n" );
+                exit(1);
+            }
+
+            /* Read the output a line at a time - output it. */
+            while (fgets(path, sizeof(path)-1, fp) != NULL) {
+                printf("%s", path);
+            }
+            pclose(fp);
+
+            printf("<<<\n");
+            i = i + ii + 3;
+        }
+        memset(command, 0, 256);
+        ii = 0;
+        printf("%c", buf[i]);
+    }
     return 0;
 }
