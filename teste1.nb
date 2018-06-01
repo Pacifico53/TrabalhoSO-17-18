@@ -1,37 +1,54 @@
 Este comando lista os ficheiros
-$ ls
->>>
-command.c
-command.h
-exemplo.nb
-main.c
-Makefile
-notebook
-parser.c
-parser.h
-teste1.nb
-<<<
-Agora podemos ordernar os ficheiros
 $ ls -l
->>>
-total 44
--rw-r--r-- 1 pacifico pacifico  1093 Jun  1  2018 command.c
--rw-r--r-- 1 pacifico pacifico   356 Jun  1  2018 command.h
--rw-r--r-- 1 pacifico pacifico     0 Jun  1 20:56 exemplo.nb
--rw-r--r-- 1 pacifico pacifico  2676 Jun  1 20:55 main.c
--rw-r--r-- 1 pacifico pacifico    75 Jun  1 20:58 Makefile
--rwxr-xr-x 1 pacifico pacifico 13952 Jun  1 20:58 notebook
--rw-r--r-- 1 pacifico pacifico   815 Jun  1  2018 parser.c
--rw-r--r-- 1 pacifico pacifico   176 Jun  1 20:11 parser.h
--rw-r--r-- 1 pacifico pacifico   129 Jun  1 20:59 teste1.nb
 <<<
+total 48
+-rw-r--r-- 1 pacifico pacifico  1094 Jun  1 21:11 command.c
+-rw-r--r-- 1 pacifico pacifico   356 Jun  1 21:14 command.h
+-rw-r--r-- 1 pacifico pacifico  6791 Jun  1 23:53 main.c
+-rw-r--r-- 1 pacifico pacifico    75 Jun  1 20:58 Makefile
+-rwxr-xr-x 1 pacifico pacifico 14000 Jun  1 23:54 notebook
+-rw-r--r-- 1 pacifico pacifico   818 Jun  1 22:38 parser.c
+-rw-r--r-- 1 pacifico pacifico   176 Jun  1 20:11 parser.h
+-rw-r--r-- 1 pacifico pacifico  1805 Jun  1 23:55 teste1.nb
+>>>
+Agora podemos ordernar os ficheiros
+$| sort
+<<<
+-rw-r--r-- 1 pacifico pacifico  1094 Jun  1 21:11 command.c
+-rw-r--r-- 1 pacifico pacifico   176 Jun  1 20:11 parser.h
+-rw-r--r-- 1 pacifico pacifico  1805 Jun  1 23:55 teste1.nb
+-rw-r--r-- 1 pacifico pacifico   356 Jun  1 21:14 command.h
+-rw-r--r-- 1 pacifico pacifico  6791 Jun  1 23:53 main.c
+-rw-r--r-- 1 pacifico pacifico    75 Jun  1 20:58 Makefile
+-rw-r--r-- 1 pacifico pacifico   818 Jun  1 22:38 parser.c
+-rwxr-xr-x 1 pacifico pacifico 14000 Jun  1 23:54 notebook
+total 48
+>>>
+Pegar na cabeca
+$| head -1
+<<<
+-rw-r--r-- 1 pacifico pacifico  1094 Jun  1 21:11 command.c
+>>>
 Ver diretoria em que estamos
 $ pwd
->>>
-/home/pacifico/Documents/GitFolder/SO_current
 <<<
+/home/pacifico/Documents/GitFolder/TrabalhoSO
+>>>
 Data 
 $ date
->>>
-Fri  1 Jun 20:59:19 WEST 2018
 <<<
+Fri  1 Jun 23:55:13 WEST 2018
+>>>
+Teste
+$5| sort
+<<<
+-rw-r--r-- 1 pacifico pacifico  1094 Jun  1 21:11 command.c
+-rw-r--r-- 1 pacifico pacifico   176 Jun  1 20:11 parser.h
+-rw-r--r-- 1 pacifico pacifico  1805 Jun  1 23:55 teste1.nb
+-rw-r--r-- 1 pacifico pacifico   356 Jun  1 21:14 command.h
+-rw-r--r-- 1 pacifico pacifico  6791 Jun  1 23:53 main.c
+-rw-r--r-- 1 pacifico pacifico    75 Jun  1 20:58 Makefile
+-rw-r--r-- 1 pacifico pacifico   818 Jun  1 22:38 parser.c
+-rwxr-xr-x 1 pacifico pacifico 14000 Jun  1 23:54 notebook
+total 48
+>>>

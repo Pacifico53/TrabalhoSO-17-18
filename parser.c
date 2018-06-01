@@ -19,7 +19,7 @@ Command* parse_file(int fd, int* i){
                 set_execution(c,file_buff);
                 set_comment(c,comment);
                 c_list[*i] = c;
-               *i = *i +1;
+                *i = *i + 1;
         }
 
         else{

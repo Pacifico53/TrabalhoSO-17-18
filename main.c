@@ -13,7 +13,7 @@ int write_to_file(Command* c_list, int fd, int size);
 int main(int argc, char* argv[]) {
 
     if (argc < 2) {
-        printf("Error in processment call. Missing arguments");
+        printf("Error in processment call. Missing arguments\n");
     }
 
     int file_descriptor = open(argv[1],O_RDONLY);
@@ -23,9 +23,10 @@ int main(int argc, char* argv[]) {
     close(file_descriptor);
 
     for(int i = 0; i < size; i++){
-
         int link[2];
+        int link2[2];
         if(pipe(link) < 0) perror("Pipe error");
+        if(pipe(link2) < 0) perror("Pipe 2 error");
 
         char* type = strtok(get_execution(c_list[i])," ");
         char** trim = trim_execution(c_list[i]);
@@ -55,7 +56,7 @@ int main(int argc, char* argv[]) {
                 char* out_buff = malloc(1024);
                 char* aux_buff = malloc(1024);
 
-                strcat(out_buff,">>>\n");
+                strcat(out_buff,"<<<\n");
                 while((n_read = read(link[0],aux_buff,1024)) > 0){
                     if(sizeof(out_buff) < n_read + out_size){
                         char* aux = realloc(out_buff, sizeof(out_buff)*2);
@@ -68,13 +69,125 @@ int main(int argc, char* argv[]) {
                     strcat(out_buff,aux_buff);
                     out_size += n_read;
                 }
-                strcat(out_buff,"<<<\n");
+                strcat(out_buff,">>>\n");
 
                 set_output(c_list[i],out_buff);
 
                 free(out_buff);
                 free(aux_buff);
             }
+        }
+        else if(len == 2){
+                p_id = fork();
+                if(p_id < 0) perror("Fork error");
+
+                if (p_id == 0) {
+                    close(link[0]);
+                    dup2(link[1], 1);
+                    close(link[1]);
+        
+                    close(link2[1]);
+                    dup2(link2[0], 0);
+                    close(link2[0]);
+                    
+                    execvp(trim[0], trim);
+                    perror("Execution error");
+                    _exit(1);
+                }
+                else {
+                    close(link[1]);
+
+                    char* outputBefore = get_output(c_list[i-1]);
+                    int outLen = strlen(outputBefore);
+                    outputBefore[outLen - 4] = '\0';
+                    outputBefore = outputBefore + 4;
+                    write(link2[1], outputBefore, strlen(outputBefore));
+                    close(link2[1]);
+
+                    wait(&out);
+                    
+                    int n_read, out_size;
+                    char* out_buff = malloc(1024);
+                    char* aux_buff = malloc(1024);
+
+                    strcat(out_buff, "<<<\n");
+                    while((n_read = read(link[0], aux_buff, 1024)) > 0){
+                        if(sizeof(out_buff) < n_read + out_size){
+                            char* aux = realloc(out_buff, sizeof(out_buff)*2);
+                            if(!aux){
+                                perror("Realloc error");
+                                _exit(1);
+                            }
+                            out_buff = aux;
+                        }
+                        strcat(out_buff,aux_buff);
+                        out_size += n_read;
+                    }
+                    strcat(out_buff,">>>\n");
+
+                    set_output(c_list[i],out_buff);
+
+                    free(out_buff);
+                    free(aux_buff);
+                }
+        }
+        else if(len > 2){
+            int typeLen = strlen(type);
+            type[typeLen - 1] = '\0';
+            type = type + 1;
+            int index = atoi(type);
+            p_id = fork();
+                if(p_id < 0) perror("Fork error");
+
+                if (p_id == 0) {
+                    close(link[0]);
+                    dup2(link[1], 1);
+                    close(link[1]);
+        
+                    close(link2[1]);
+                    dup2(link2[0], 0);
+                    close(link2[0]);
+                    
+                    execvp(trim[0], trim);
+                    perror("Execution error");
+                    _exit(1);
+                }
+                else {
+                    close(link[1]);
+
+                    char* outputBefore = get_output(c_list[i-index]);
+                    int outLen = strlen(outputBefore);
+                    outputBefore[outLen - 4] = '\0';
+                    outputBefore = outputBefore + 4;
+                    write(link2[1], outputBefore, strlen(outputBefore));
+                    close(link2[1]);
+
+                    wait(&out);
+                    
+                    int n_read, out_size;
+                    char* out_buff = malloc(1024);
+                    char* aux_buff = malloc(1024);
+
+                    strcat(out_buff, "<<<\n");
+                    while((n_read = read(link[0], aux_buff, 1024)) > 0){
+                        if(sizeof(out_buff) < n_read + out_size){
+                            char* aux = realloc(out_buff, sizeof(out_buff)*2);
+                            if(!aux){
+                                perror("Realloc error");
+                                _exit(1);
+                            }
+                            out_buff = aux;
+                        }
+                        strcat(out_buff,aux_buff);
+                        out_size += n_read;
+                    }
+                    strcat(out_buff,">>>\n");
+
+                    set_output(c_list[i],out_buff);
+
+                    free(out_buff);
+                    free(aux_buff);
+                }
         }
     }
 
