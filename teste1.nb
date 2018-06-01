@@ -1,0 +1,37 @@
+Este comando lista os ficheiros
+$ ls
+>>>
+command.c
+command.h
+exemplo.nb
+main.c
+Makefile
+notebook
+parser.c
+parser.h
+teste1.nb
+<<<
+Agora podemos ordernar os ficheiros
+$ ls -l
+>>>
+total 44
+-rw-r--r-- 1 pacifico pacifico  1093 Jun  1  2018 command.c
+-rw-r--r-- 1 pacifico pacifico   356 Jun  1  2018 command.h
+-rw-r--r-- 1 pacifico pacifico     0 Jun  1 20:56 exemplo.nb
+-rw-r--r-- 1 pacifico pacifico  2676 Jun  1 20:55 main.c
+-rw-r--r-- 1 pacifico pacifico    75 Jun  1 20:58 Makefile
+-rwxr-xr-x 1 pacifico pacifico 13952 Jun  1 20:58 notebook
+-rw-r--r-- 1 pacifico pacifico   815 Jun  1  2018 parser.c
+-rw-r--r-- 1 pacifico pacifico   176 Jun  1 20:11 parser.h
+-rw-r--r-- 1 pacifico pacifico   129 Jun  1 20:59 teste1.nb
+<<<
+Ver diretoria em que estamos
+$ pwd
+>>>
+/home/pacifico/Documents/GitFolder/SO_current
+<<<
+Data 
+$ date
+>>>
+Fri  1 Jun 20:59:19 WEST 2018
+<<<

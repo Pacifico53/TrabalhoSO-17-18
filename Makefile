@@ -1,2 +1,5 @@
-program: file.c
-	gcc -o program file.c
+program: 
+	gcc -o notebook main.c command.c parser.c 
+
+clean:
+	rm notebook
