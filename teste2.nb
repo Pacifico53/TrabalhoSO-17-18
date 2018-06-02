@@ -1,8 +1,0 @@
-Este comando lista os ficheiros
-$ ls
-Agora podemos ordernar os ficheiros
-$ git status
-Head
-$| head -1
-Cowsay
-$| cowsay

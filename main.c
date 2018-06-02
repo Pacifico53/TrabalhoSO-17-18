@@ -8,7 +8,8 @@
 #include "command.h"
 #include "parser.h"
 
-int write_to_file(Command* c_list, int fd, int size);
+int write_to_file(Command* c_list, int fd, int size); void increase(char** data);
+
 
 int main(int argc, char* argv[]) {
 
@@ -55,22 +56,14 @@ int main(int argc, char* argv[]) {
                 int n_read = 0, out_size = 0; 
                 int max = 2048;
                 char* out_buff = malloc(max);
-                int c = 0;
                 char* aux_buff = malloc(max);
                 
                 strcat(out_buff,">>>\n");
                 while((n_read = read(link[0],aux_buff,1024)) > 0){
-                    if (c == 0) {out_size = sizeof(aux_buff);}
                     if(max < n_read + out_size){
                         max *= 2;
-                        char* aux = (char *)realloc(out_buff, max);
-                        if(!aux){
-                            perror("Realloc error");
-                            _exit(1);
-                        }
-                        out_buff = aux;
+                        increase(&out_buff);
                     }
-                    c++;
                     strcat(out_buff,aux_buff);
                     out_size += n_read;
                 }
@@ -114,22 +107,14 @@ int main(int argc, char* argv[]) {
                     int n_read = 0, out_size = 0; 
                     int max = 2048;
                     char* out_buff = malloc(max);
-                    int c = 0;
                     char* aux_buff = malloc(max);
                     
                     strcat(out_buff, ">>>\n");
                     while((n_read = read(link[0], aux_buff, 1024)) > 0){
-                        if (c == 0) {out_size = sizeof(aux_buff);}
                         if(max < n_read + out_size){
                             max *= 2;
-                            char* aux = (char *)realloc(out_buff, max);
-                            if(!aux){
-                                perror("Realloc error");
-                                _exit(1);
-                            }
-                            out_buff = aux;
+                            increase(&out_buff);
                         }
-                        c++;
                         strcat(out_buff,aux_buff);
                         out_size += n_read;
                     }
@@ -177,22 +162,14 @@ int main(int argc, char* argv[]) {
                     int n_read = 0, out_size = 0; 
                     int max = 2048;
                     char* out_buff = malloc(max);
-                    int c = 0;
                     char* aux_buff = malloc(max);
 
                     strcat(out_buff, ">>>\n");
                     while((n_read = read(link[0], aux_buff, 1024)) > 0){
-                        if (c == 0) {out_size = sizeof(aux_buff);}
                         if(max < n_read + out_size){
                             max *= 2;
-                            char* aux = (char *)realloc(out_buff, max);
-                            if(!aux){
-                                perror("Realloc error");
-                                _exit(1);
-                            }
-                            out_buff = aux;
+                            increase(&out_buff);
                         }
-                        c++;
                         strcat(out_buff,aux_buff);
                         out_size += n_read;
                     }
@@ -229,4 +206,8 @@ int write_to_file(Command* c_list, int fd, int size){
     }
 
     return 0;
+}
+
+void increase(char** data){
+    *data = realloc(*data, 1024 * sizeof(char));
 }

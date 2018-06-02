@@ -47,6 +47,12 @@ char* get_output(Command c){
     return out;
 }
 
+void freeCommand(Command c){
+    free(c->comment);
+    free(c->execution);
+    free(c->output);
+}
+
 char** trim_execution(Command c){
     char** trim = malloc(sizeof(char* )*16);
     char* aux = get_execution(c);
