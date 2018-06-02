@@ -3,10 +3,10 @@
 #include <zconf.h>
 #include "parser.h"
 
-#define BUFF 128
+#define BUFF 256
 
 Command* parse_file(int fd, int* i){
-    Command* c_list = malloc(sizeof(struct command*)*100);
+    Command* c_list = malloc(sizeof(struct command*)*128);
     *i = 0;
 
     char file_buff[BUFF];
@@ -21,7 +21,6 @@ Command* parse_file(int fd, int* i){
                 c_list[*i] = c;
                 *i = *i + 1;
         }
-
         else{
                 strcpy(comment,file_buff);
         }
@@ -33,7 +32,7 @@ Command* parse_file(int fd, int* i){
 ssize_t read_line(int fd, char *buf, size_t nbyte){
     int i=0;
 
-    while(i<nbyte-1 && read(fd, buf+i,1)>0 && buf[i] != '\n'){
+    while(i < nbyte-1 && read(fd, buf+i,1)>0 && buf[i] != '\n'){
         i++;
     }
 

@@ -27,7 +27,9 @@ void set_execution(Command c, char* exec){
 }
 
 void set_output(Command c, char* out){
+    if(strlen(out) > 1024) realloc(c->output, strlen(out));
     strcpy(c->output,out);
+
 }
 
 char* get_comment(Command c){

@@ -52,20 +52,25 @@ int main(int argc, char* argv[]) {
                 close(link[1]);
                 wait(&out);
 
-                int n_read, out_size;
-                char* out_buff = malloc(1024);
-                char* aux_buff = malloc(1024);
-
+                int n_read = 0, out_size = 0; 
+                int max = 2048;
+                char* out_buff = malloc(max);
+                int c = 0;
+                char* aux_buff = malloc(max);
+                
                 strcat(out_buff,">>>\n");
                 while((n_read = read(link[0],aux_buff,1024)) > 0){
-                    if(sizeof(out_buff) < n_read + out_size){
-                        char* aux = realloc(out_buff, sizeof(out_buff)*2);
+                    if (c == 0) {out_size = sizeof(aux_buff);}
+                    if(max < n_read + out_size){
+                        max *= 2;
+                        char* aux = (char *)realloc(out_buff, max);
                         if(!aux){
                             perror("Realloc error");
                             _exit(1);
                         }
                         out_buff = aux;
                     }
+                    c++;
                     strcat(out_buff,aux_buff);
                     out_size += n_read;
                 }
@@ -106,20 +111,25 @@ int main(int argc, char* argv[]) {
 
                     wait(&out);
                     
-                    int n_read, out_size;
-                    char* out_buff = malloc(1024);
-                    char* aux_buff = malloc(1024);
-
+                    int n_read = 0, out_size = 0; 
+                    int max = 2048;
+                    char* out_buff = malloc(max);
+                    int c = 0;
+                    char* aux_buff = malloc(max);
+                    
                     strcat(out_buff, ">>>\n");
                     while((n_read = read(link[0], aux_buff, 1024)) > 0){
-                        if(sizeof(out_buff) < n_read + out_size){
-                            char* aux = realloc(out_buff, sizeof(out_buff)*2);
+                        if (c == 0) {out_size = sizeof(aux_buff);}
+                        if(max < n_read + out_size){
+                            max *= 2;
+                            char* aux = (char *)realloc(out_buff, max);
                             if(!aux){
                                 perror("Realloc error");
                                 _exit(1);
                             }
                             out_buff = aux;
                         }
+                        c++;
                         strcat(out_buff,aux_buff);
                         out_size += n_read;
                     }
@@ -163,21 +173,26 @@ int main(int argc, char* argv[]) {
                     close(link2[1]);
 
                     wait(&out);
-                    
-                    int n_read, out_size;
-                    char* out_buff = malloc(1024);
-                    char* aux_buff = malloc(1024);
+                   
+                    int n_read = 0, out_size = 0; 
+                    int max = 2048;
+                    char* out_buff = malloc(max);
+                    int c = 0;
+                    char* aux_buff = malloc(max);
 
                     strcat(out_buff, ">>>\n");
                     while((n_read = read(link[0], aux_buff, 1024)) > 0){
-                        if(sizeof(out_buff) < n_read + out_size){
-                            char* aux = realloc(out_buff, sizeof(out_buff)*2);
+                        if (c == 0) {out_size = sizeof(aux_buff);}
+                        if(max < n_read + out_size){
+                            max *= 2;
+                            char* aux = (char *)realloc(out_buff, max);
                             if(!aux){
                                 perror("Realloc error");
                                 _exit(1);
                             }
                             out_buff = aux;
                         }
+                        c++;
                         strcat(out_buff,aux_buff);
                         out_size += n_read;
                     }

@@ -10,36 +10,43 @@ parser.c
 parser.h
 README.md
 teste1.nb
+teste2.nb
 <<<
 Agora podemos ordernar os ficheiros
-$| sort
+$ git status
 >>>
-command.c
-command.h
-main.c
-Makefile
-notebook
-parser.c
-parser.h
-README.md
-teste1.nb
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	modified:   Makefile
+	modified:   command.c
+	modified:   main.c
+	modified:   parser.c
+	modified:   teste1.nb
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	notebook
+	teste2.nb
+
+no changes added to commit (use "git add" and/or "git commit -a")
 <<<
-Pegar na cabeca
+Head
 $| head -1
 >>>
-command.c
+On branch master
 <<<
-Contar as palavras do ls sorted
-$2| wc
+Cowsay
+$| cowsay
 >>>
-      9       9      83
-<<<
-E fazer um cowsay
-$2| cowsay
->>>
- ___________
-< command.c >
- -----------
+ __________________
+< On branch master >
+ ------------------
         \   ^__^
          \  (oo)\_______
             (__)\       )\/\
