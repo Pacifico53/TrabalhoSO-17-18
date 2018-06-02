@@ -1,54 +1,48 @@
 Este comando lista os ficheiros
-$ ls -l
-<<<
-total 48
--rw-r--r-- 1 pacifico pacifico  1094 Jun  1 21:11 command.c
--rw-r--r-- 1 pacifico pacifico   356 Jun  1 21:14 command.h
--rw-r--r-- 1 pacifico pacifico  6791 Jun  1 23:53 main.c
--rw-r--r-- 1 pacifico pacifico    75 Jun  1 20:58 Makefile
--rwxr-xr-x 1 pacifico pacifico 14000 Jun  1 23:54 notebook
--rw-r--r-- 1 pacifico pacifico   818 Jun  1 22:38 parser.c
--rw-r--r-- 1 pacifico pacifico   176 Jun  1 20:11 parser.h
--rw-r--r-- 1 pacifico pacifico  1805 Jun  1 23:55 teste1.nb
+$ ls
 >>>
+command.c
+command.h
+main.c
+Makefile
+notebook
+parser.c
+parser.h
+README.md
+teste1.nb
+<<<
 Agora podemos ordernar os ficheiros
 $| sort
-<<<
--rw-r--r-- 1 pacifico pacifico  1094 Jun  1 21:11 command.c
--rw-r--r-- 1 pacifico pacifico   176 Jun  1 20:11 parser.h
--rw-r--r-- 1 pacifico pacifico  1805 Jun  1 23:55 teste1.nb
--rw-r--r-- 1 pacifico pacifico   356 Jun  1 21:14 command.h
--rw-r--r-- 1 pacifico pacifico  6791 Jun  1 23:53 main.c
--rw-r--r-- 1 pacifico pacifico    75 Jun  1 20:58 Makefile
--rw-r--r-- 1 pacifico pacifico   818 Jun  1 22:38 parser.c
--rwxr-xr-x 1 pacifico pacifico 14000 Jun  1 23:54 notebook
-total 48
 >>>
+command.c
+command.h
+main.c
+Makefile
+notebook
+parser.c
+parser.h
+README.md
+teste1.nb
+<<<
 Pegar na cabeca
 $| head -1
-<<<
--rw-r--r-- 1 pacifico pacifico  1094 Jun  1 21:11 command.c
 >>>
-Ver diretoria em que estamos
-$ pwd
+command.c
 <<<
-/home/pacifico/Documents/GitFolder/TrabalhoSO
+Contar as palavras do ls sorted
+$2| wc
 >>>
-Data 
-$ date
+      9       9      83
 <<<
-Fri  1 Jun 23:55:13 WEST 2018
+E fazer um cowsay
+$2| cowsay
 >>>
-Teste
-$5| sort
+ ___________
+< command.c >
+ -----------
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
 <<<
--rw-r--r-- 1 pacifico pacifico  1094 Jun  1 21:11 command.c
--rw-r--r-- 1 pacifico pacifico   176 Jun  1 20:11 parser.h
--rw-r--r-- 1 pacifico pacifico  1805 Jun  1 23:55 teste1.nb
--rw-r--r-- 1 pacifico pacifico   356 Jun  1 21:14 command.h
--rw-r--r-- 1 pacifico pacifico  6791 Jun  1 23:53 main.c
--rw-r--r-- 1 pacifico pacifico    75 Jun  1 20:58 Makefile
--rw-r--r-- 1 pacifico pacifico   818 Jun  1 22:38 parser.c
--rwxr-xr-x 1 pacifico pacifico 14000 Jun  1 23:54 notebook
-total 48
->>>

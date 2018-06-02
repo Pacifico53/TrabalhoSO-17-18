@@ -56,7 +56,7 @@ int main(int argc, char* argv[]) {
                 char* out_buff = malloc(1024);
                 char* aux_buff = malloc(1024);
 
-                strcat(out_buff,"<<<\n");
+                strcat(out_buff,">>>\n");
                 while((n_read = read(link[0],aux_buff,1024)) > 0){
                     if(sizeof(out_buff) < n_read + out_size){
                         char* aux = realloc(out_buff, sizeof(out_buff)*2);
@@ -69,7 +69,7 @@ int main(int argc, char* argv[]) {
                     strcat(out_buff,aux_buff);
                     out_size += n_read;
                 }
-                strcat(out_buff,">>>\n");
+                strcat(out_buff,"<<<\n");
 
                 set_output(c_list[i],out_buff);
 
@@ -110,7 +110,7 @@ int main(int argc, char* argv[]) {
                     char* out_buff = malloc(1024);
                     char* aux_buff = malloc(1024);
 
-                    strcat(out_buff, "<<<\n");
+                    strcat(out_buff, ">>>\n");
                     while((n_read = read(link[0], aux_buff, 1024)) > 0){
                         if(sizeof(out_buff) < n_read + out_size){
                             char* aux = realloc(out_buff, sizeof(out_buff)*2);
@@ -123,7 +123,7 @@ int main(int argc, char* argv[]) {
                         strcat(out_buff,aux_buff);
                         out_size += n_read;
                     }
-                    strcat(out_buff,">>>\n");
+                    strcat(out_buff,"<<<\n");
 
                     set_output(c_list[i],out_buff);
 
@@ -168,7 +168,7 @@ int main(int argc, char* argv[]) {
                     char* out_buff = malloc(1024);
                     char* aux_buff = malloc(1024);
 
-                    strcat(out_buff, "<<<\n");
+                    strcat(out_buff, ">>>\n");
                     while((n_read = read(link[0], aux_buff, 1024)) > 0){
                         if(sizeof(out_buff) < n_read + out_size){
                             char* aux = realloc(out_buff, sizeof(out_buff)*2);
@@ -181,7 +181,7 @@ int main(int argc, char* argv[]) {
                         strcat(out_buff,aux_buff);
                         out_size += n_read;
                     }
-                    strcat(out_buff,">>>\n");
+                    strcat(out_buff,"<<<\n");
 
                     set_output(c_list[i],out_buff);
 
